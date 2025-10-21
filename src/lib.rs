@@ -30,8 +30,7 @@ async fn execute(req: web::Json<ExecuteRequest>) -> impl Responder {
     }
 }
 
-#[actix_web::main]
-async fn main() -> std::io::Result<()> {
+pub async fn run() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
             .route("/execute", web::post().to(execute))
