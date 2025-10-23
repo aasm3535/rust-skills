@@ -7,6 +7,43 @@ Skills is a simple and powerful micro-server that allows you to execute Python c
 - Execute arbitrary Python code.
 - Receive `stdout` and `stderr` from the executed code.
 - Simple JSON-based API.
+- Execution history.
+
+## API
+
+### `/execute`
+
+- **Method:** `POST`
+- **Description:** Executes Python code.
+- **Request Body:**
+  ```json
+  {
+    "code": "print(\\"Hello, world!\\")"
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "stdout": "Hello, world!\\n",
+    "stderr": ""
+  }
+  ```
+
+### `/history`
+
+- **Method:** `GET`
+- **Description:** Retrieves the history of all executed code.
+- **Response:** An array of history entries.
+  ```json
+  [
+    {
+      "code": "print(1+1)",
+      "stdout": "2\\n",
+      "stderr": "",
+      "timestamp": "2023-10-27T10:00:00Z"
+    }
+  ]
+  ```
 
 ## Security Warning
 
